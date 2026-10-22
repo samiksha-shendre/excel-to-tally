@@ -46,6 +46,8 @@ for row in range(7, b2b_sheet.max_row + 1):
     if not any(b2b_sheet.cell(row=row, column=col).value for col in range(1, 21)):
         continue
 
+    
+
     invoice_no = b2b_sheet.cell(row=row, column=3).value or ""
     invoice_date = b2b_sheet.cell(row=row, column=5).value or ""
     creditor_ledger = b2b_sheet.cell(row=row, column=2).value or ""

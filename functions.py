@@ -36,14 +36,24 @@ def give_bg_color(sheet_name, min_row, max_row, min_col, max_col, bg_color):
         for cell in row:
             cell.fill = bg_color
 
+def assign_value_to_cell(sheet_name, a,b,c):
+    sheet_name.cell(row=a,column=b,value=c)
 
+def get_value_from_sheet(sheet_name,row,column):
+    val = sheet_name.cell(row=row,column=column).value
+    return val if val else ""
 
+def copy_from_1_to_2(sheet_1, row_1, col_1, sheet_2, row_2, col_2):
+    val = get_value_from_sheet(sheet_1,row_1,col_1)
+    assign_value_to_cell(sheet_2,row_2,col_2,val)
 
+def round_value_to_2_dec(sheet_name,start_row,end_row,start_column,end_column):
+    for row in sheet_name.iter_rows(min_row=start_row, max_row=end_row, min_col=start_column, max_col=end_column):
+        for cell in row:
+            if isinstance(cell.value, (int, float)):
+                cell.number_format = '0.00'
 
-# get_2B_file("082026", "27AAXFB1785G1ZY", "15092026")
-
-
-
+# def give_fixed_width(sheet_name,column,width):
 
 
 
