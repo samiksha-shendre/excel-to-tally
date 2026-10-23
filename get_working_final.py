@@ -11,6 +11,9 @@ gst_year = details_sheet["B2"].value
 
 heading_names = ["SR. NO.", "INVOICE NO.", "DATE", "PARTY NAME", "GST NO.", "NET AMOUNT", "%", "CGST", "%", "SGST", "%","IGST", "R/OFF", "TOTAL AMOUNT"]
 
+even_width_columns = [["A", 7], ["C", 14], ["E", 22], ["G", 7], ["I", 7], ["K", 7], ["M", 7]]
+odd_width_columns = ["B", "D", "F", "H", "J", "L", "N"]
+
 for company in companies:
     compName = company["name"]
     gstNo = company["GST No."]
@@ -60,6 +63,8 @@ for company in companies:
         
     functions.round_value_to_2_dec(sheet_wb,3,sheet_wb.max_row,6,14)
 
+    for col, wid in even_width_columns:
+        functions.give_fixed_width(sheet_wb, col, wid)
     
 
     wb_working.save(wb_working_filename)

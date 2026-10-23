@@ -53,11 +53,22 @@ def round_value_to_2_dec(sheet_name,start_row,end_row,start_column,end_column):
             if isinstance(cell.value, (int, float)):
                 cell.number_format = '0.00'
 
-# def give_fixed_width(sheet_name,column,width):
+def give_fixed_width(sheet_name,column,width_value):
+    sheet_name.column_dimensions[column].width = width_value
 
+def give_variable_width(sheet_name,column):
+    max_len = 0
 
+# for col in working_wb_purchases_sheet.columns:
+#     max_len = 0
+#     col_letter = get_column_letter(col[0].column)  
 
+#     for cell in col:
+#         if cell.value is not None:
+#             # Cast the value to a string to check its character length
+#             cell_len = len(str(cell.value))
+#             if cell_len > max_len:
+#                 max_len = cell_len
+                
+#     working_wb_purchases_sheet.column_dimensions[col_letter].width = max_len + 3
 
-#function to give specific a column width of b
-# def give_fixed_column_width(a, b):
-#     working_wb_purchases_sheet.column_dimensions[a].width = b
